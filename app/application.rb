@@ -3,7 +3,8 @@
     resp = Rack::Response.new
     req = Rack::Request.new(env)
     
-    if req.path =="/item/" 
+    if req.path =="/item/Item.name"
+      resp.write "Item.price"
     else
       resp.status = 404
     end
