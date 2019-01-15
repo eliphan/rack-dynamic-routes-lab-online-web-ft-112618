@@ -5,6 +5,8 @@ class Application
     
     if req.path =="/item/Item.name"
       resp.write "Item.price"
+    elsif
+      
     else
       resp.write "Route not found"
       resp.status = 404
