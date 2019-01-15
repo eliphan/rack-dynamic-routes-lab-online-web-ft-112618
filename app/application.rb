@@ -7,14 +7,16 @@ class Application
     
     if req.path.match (/items/)
       item_name = req.path.split("/items/").last
-      item = @@items.find{|it| it.name == item_name}
-      
+      if item = @@items.find{|it| it.name == item_name}
+        resp.write item.price
+      else
+        resp.write "Item not found"
+        resp.status = 400
+      end
+    else
+      resp.write "Route not found"
+      resp.status = 404
 
-      song_title = req.path.split("/songs/").last #turn /songs/Sorry into Sorry
-      song = @@songs.find{|s| s.title == song_title}
- 
-      resp.write song.artist
-      
     end
     
       resp.finish
